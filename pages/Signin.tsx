@@ -21,7 +21,7 @@ const Signin = () => {
         setErrorMessage("");
         try {
             await signin(data.email, data.password);
-            router.push('/');
+            router.push('/app');
         } catch (err: any) {
             if (err.statusCode === 401) {
                 router.push("/verify");
