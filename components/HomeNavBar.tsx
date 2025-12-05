@@ -2,14 +2,14 @@
 
 import { UserDTO } from "@/data";
 import { userAtom } from "@/store";
-import { AccountCircle, ArrowDropDown, Logout } from "@mui/icons-material";
+import { AccountCircle, ArrowDropDown, Logout, ShoppingCartOutlined } from "@mui/icons-material";
 import { useSetAtom } from "jotai";
 import { useHydrateAtoms } from "jotai/utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const HomeNavBar = ({ user }: { user: UserDTO }) => {
+const HomeNavBar = ({ user }: { user: UserDTO | null }) => {
     useHydrateAtoms([[userAtom, user]], { dangerouslyForceHydrate: true });
 
     const [openDropdown, setOpenDropdown] = useState(false);
@@ -28,30 +28,48 @@ const HomeNavBar = ({ user }: { user: UserDTO }) => {
                 </Link>
             </div>
             <div className="flex items-center gap-5">
-                <div className="rounded-full bg-black text-white font-bold py-2 px-5 cursor-pointer relative" onClick={() => setOpenDropdown(!openDropdown)}>
-                    <p>
-                        Hi, {user.firstName} <ArrowDropDown />
-                    </p>
-                    {
-                        openDropdown &&
+                {
+                    user ?
                         (
-                            <div className="absolute top-[55px] right-0 p-2 rounded-md w-full bg-indigo-500 flex flex-col gap-2">
-                                <button className="p-2 rounded-md flex items-center bg-black gap-2 cursor-pointer">
-                                    <AccountCircle />
-                                    <p>
-                                        Profile
-                                    </p>
-                                </button>
-                                <button className="p-2 rounded-md flex items-center bg-black gap-2 cursor-pointer" onClick={handleLogout}>
-                                    <Logout />
-                                    <p>
-                                        Log out
-                                    </p>
-                                </button>
+                            <div className="rounded-full bg-black text-white font-bold py-2 px-5 cursor-pointer relative" onClick={() => setOpenDropdown(!openDropdown)}>
+                                <p>
+                                    Hi, {user.firstName} <ArrowDropDown />
+                                </p>
+                                {
+                                    openDropdown &&
+                                    (
+                                        <div className="absolute top-[55px] right-0 p-2 rounded-md w-full bg-indigo-500 flex flex-col gap-2">
+                                            <button className="p-2 rounded-md flex items-center bg-black gap-2 cursor-pointer">
+                                                <AccountCircle />
+                                                <p>
+                                                    Profile
+                                                </p>
+                                            </button>
+                                            <button className="p-2 rounded-md flex items-center bg-black gap-2 cursor-pointer" onClick={handleLogout}>
+                                                <Logout />
+                                                <p>
+                                                    Log out
+                                                </p>
+                                            </button>
+                                        </div>
+                                    )
+                                }
                             </div>
+                        ) :
+                        (
+                            <>
+                                <Link href="/signin" className="text-white font-bold">
+                                    Sign in
+                                </Link>
+                                <Link href="/signup" className="text-white font-bold py-2 px-5 rounded-full bg-black">
+                                    Sign up
+                                </Link>
+                            </>
                         )
-                    }
-                </div>
+                }
+                <button className="text-white cursor-pointer">
+                    <ShoppingCartOutlined />
+                </button>
             </div>
         </nav>
     );
