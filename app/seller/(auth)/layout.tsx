@@ -1,8 +1,10 @@
 
-const SellerAuthRootLayout = ({children}: {children: React.ReactNode}) => {
+const SellerAuthRootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <main className="px-2">
-            {children}
+        <main>
+            <div className="px-2">
+                {children}
+            </div>
         </main>
     )
 }
