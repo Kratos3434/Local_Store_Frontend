@@ -27,3 +27,24 @@ export interface UserDTO {
     createdAt: Date;
     updatedAt: Date | null;
 };
+
+export interface Store {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date | null;
+    name: string;
+    description: string;
+    profilePictureURL: string;
+    backgroundPictureURL: string;
+    categoryId: number;
+    sellerId: number;
+};
+
+export interface Seller {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date | null;
+    sellerId: number;
+    firstName: string;
+    lastName: string;
+};

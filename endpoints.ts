@@ -22,3 +22,15 @@ const userBaseUrl = `${localBaseUrl}/user`;
 export const userEndpoint = {
     profile: `${baseUrl}/user/profile`
 };
+
+const sellerBaseUrl = `${localBaseUrl}/seller`;
+
+export const sellerEndpoint = {
+    profile: `${baseUrl}/seller/profile`
+};
+
+const storeBaseUrl  =`${localBaseUrl}/store`;
+
+export const storeEndpoint = {
+    profile: `${baseUrl}/store/`
+}
