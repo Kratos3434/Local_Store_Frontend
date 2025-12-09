@@ -16,6 +16,9 @@ export interface SignupDTO {
 export const USER_SESSION_TOKEN = "USER_SESSION_TOKEN";
 export const USER_VERIFY_TOKEN = "USER_VERIFY_TOKEN";
 
+export const SELLER_SESSION_TOKEN = "SELLER_SESSION_TOKEN";
+export const SELLER_VERIFY_TOKEN = "SELLER_VERIFY_TOKEN";
+
 export interface UserDTO {
     firstName: string;
     lastName: string;

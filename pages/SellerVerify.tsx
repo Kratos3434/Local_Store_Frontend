@@ -3,6 +3,7 @@
 import Input from "@/components/Input";
 import Modal from "@/components/Modal";
 import SubmitButton from "@/components/SubmitButton";
+import { sendSellerOtp, verifySeller } from "@/controller/auth.controller";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -22,11 +23,11 @@ const SellerVerify = ({ email }: { email: string }) => {
         isLoading(true);
         setErrorMessage("");
         try {
-            // await verifyUser(data.otp);
+            await verifySeller(data.otp);
 
-            await fetch('/local_api/cookies/verify', { method: 'DELETE' });
+            await fetch('/local_api/cookies/seller/verify', { method: 'DELETE' });
 
-            router.replace('/signin');
+            router.replace('/seller/signin');
         } catch (err: any) {
             setErrorMessage(err.message);
             isLoading(false);
@@ -38,8 +39,8 @@ const SellerVerify = ({ email }: { email: string }) => {
         isResendLoading(true);
         setResendMessage("");
         try {
-            // const message = await sendOtp();
-            // setResendMessage(message);
+            const message = await sendSellerOtp();
+            setResendMessage(message);
         } catch (err: any) {
             setResendMessage(err.message);
         }

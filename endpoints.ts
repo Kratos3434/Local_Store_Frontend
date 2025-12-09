@@ -9,7 +9,12 @@ export const authEndpoint = {
     verifyOtp: (otp: string) => `${authBaseUrl}/verify/${otp}` ,
     sendOtp: `${authBaseUrl}/send-otp`,
     authenticateVerifyToken: `${baseUrl}/auth/authenticate/verify-token`,
-    authenticateSessionToken: `${baseUrl}/auth/authenticate/session-token`
+    authenticateSessionToken: `${baseUrl}/auth/authenticate/session-token`,
+    sellerSignin: `${authBaseUrl}/seller/signin`,
+    sellerSignup: `${authBaseUrl}/seller/signup`,
+    verifySellerOtp: (otp: string) => `${authBaseUrl}/seller/verify/${otp}`,
+    sellerSendOtp: `${authBaseUrl}/seller/send-otp`,
+    authenticateSellerVerifyToken: `${baseUrl}/auth/authenticate/seller-verify-token`
 };
 
 const userBaseUrl = `${localBaseUrl}/user`;

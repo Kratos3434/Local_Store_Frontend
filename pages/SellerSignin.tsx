@@ -3,6 +3,7 @@
 import Input from "@/components/Input";
 import SecureInput from "@/components/SecureInput";
 import SubmitButton from "@/components/SubmitButton";
+import { sellerSignin } from "@/controller/auth.controller";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -15,6 +16,22 @@ const SellerSignin = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const router = useRouter();
 
+    const handleSellerSignin = async (data: { email: string, password: string }) => {
+        isLoading(true);
+        setErrorMessage("");
+        try {
+            await sellerSignin(data.email, data.password);
+            router.push("/seller/dashboard");
+        } catch (err: any) {
+            if (err.statusCode === 401) {
+                router.push("/seller/verify");
+            } else {
+                setErrorMessage(err.message);
+                isLoading(false);
+            }
+        }
+    }
+
     return (
         <div className="w-full h-dvh bg-indigo-500 flex justify-center items-center flex-col">
             <div className="w-full max-w-[500px] bg-white rounded-md shadow-lg py-4 px-4">
@@ -22,7 +39,7 @@ const SellerSignin = () => {
                     Seller Sign in
                 </h1>
                 <hr className="my-3" />
-                <form>
+                <form onSubmit={handleSubmit(handleSellerSignin)}>
                     <Input label="Email" type="email" register={register('email', { required: "email is required" })} errorMessage={errors.email && errors.email.message} />
                     <SecureInput label="Password" register={register('password', { required: 'password is required' })} errorMessage={errors.password && errors.password.message} />
                     <div className="flex flex-col items-center mt-10">
