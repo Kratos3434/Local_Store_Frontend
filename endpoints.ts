@@ -35,7 +35,7 @@ export const storeEndpoint = {
     profile: `${baseUrl}/store/`
 }
 
-const storeCategoryBaseUrl = `${baseUrl}/store-category`;
+const storeCategoryBaseUrl = `/server/store-category`;
 
 export const storeCategoryEndpoint = {
     list: `${storeCategoryBaseUrl}/list`
