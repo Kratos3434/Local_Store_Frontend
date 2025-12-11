@@ -1,10 +1,7 @@
+import CreateStore from "@/pages/CreateStore";
 
-const CreateStorePage = () => {
-    return (
-        <div>
-            <h1>Create store</h1>
-        </div>
-    )
+const CreateStorePage = async () => {
+    return <CreateStore />;
 }
 
 export default CreateStorePage;

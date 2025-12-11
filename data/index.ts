@@ -48,3 +48,25 @@ export interface Seller {
     firstName: string;
     lastName: string;
 };
+
+export interface StoreDTO {
+    name: string;
+    description: string;
+    address: Store_AddressDTO;
+    category: string;
+};
+
+export interface Store_AddressDTO {
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    province: string;
+    postalCode: string;
+};
+
+export interface Store_Category {
+    id: number;
+    name: string;
+    createdAt: Date;
+    updatedAt: Date | null;
+};

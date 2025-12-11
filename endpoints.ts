@@ -17,20 +17,26 @@ export const authEndpoint = {
     authenticateSellerVerifyToken: `${baseUrl}/auth/authenticate/seller-verify-token`
 };
 
-const userBaseUrl = `${localBaseUrl}/user`;
+const userBaseUrl = `${baseUrl}/user`;
 
 export const userEndpoint = {
     profile: `${baseUrl}/user/profile`
 };
 
-const sellerBaseUrl = `${localBaseUrl}/seller`;
+const sellerBaseUrl = `${baseUrl}/seller`;
 
 export const sellerEndpoint = {
     profile: `${baseUrl}/seller/profile`
 };
 
-const storeBaseUrl  =`${localBaseUrl}/store`;
+const storeBaseUrl = `${baseUrl}/store`;
 
 export const storeEndpoint = {
     profile: `${baseUrl}/store/`
+}
+
+const storeCategoryBaseUrl = `${baseUrl}/store-category`;
+
+export const storeCategoryEndpoint = {
+    list: `${storeCategoryBaseUrl}/list`
 }
