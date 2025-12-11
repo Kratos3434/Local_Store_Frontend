@@ -1,4 +1,4 @@
-import CreateStore from "@/pages/CreateStore";
+import CreateStore from "@/components/CreateStore";
 
 const CreateStorePage = async () => {
     return <CreateStore />;

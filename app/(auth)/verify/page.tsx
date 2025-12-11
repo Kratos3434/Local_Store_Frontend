@@ -1,6 +1,6 @@
 import { authenticateVerifyToken } from "@/controller/auth.controller";
 import { USER_VERIFY_TOKEN } from "@/data"
-import Verify from "@/pages/Verify";
+import Verify from "@/components/Verify";
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation";
 

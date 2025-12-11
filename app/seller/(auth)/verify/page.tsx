@@ -1,6 +1,6 @@
 import { authenticateSellerVerifyToken } from "@/controller/auth.controller";
 import { SELLER_VERIFY_TOKEN } from "@/data";
-import SellerVerify from "@/pages/SellerVerify";
+import SellerVerify from "@/components/SellerVerify";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 

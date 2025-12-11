@@ -1,4 +1,4 @@
-import SellerSignup from "@/pages/SellerSignup";
+import SellerSignup from "@/components/SellerSignup";
 
 const SellerSignupPage = () => {
     return <SellerSignup />;

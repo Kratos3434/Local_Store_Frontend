@@ -1,4 +1,4 @@
-import SellerSignin from "@/pages/SellerSignin";
+import SellerSignin from "@/components/SellerSignin";
 
 const SellerSigninPage = () => {
     return <SellerSignin />;
