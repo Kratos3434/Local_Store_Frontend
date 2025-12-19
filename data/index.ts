@@ -70,3 +70,46 @@ export interface Store_Category {
     createdAt: Date;
     updatedAt: Date | null;
 };
+
+export interface ProductDTO {
+    name: string;
+    description: string;
+    priceInCad: number;
+    isNew: boolean;
+    featuredPhotoURL: string;
+    isMeetUpOnly: boolean;
+    quantity: number;
+    category: string;
+    tags: string[];
+};
+
+export interface Product {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date | null;
+    name: string;
+    description: string;
+    categoryId: number;
+    storeId: number;
+    priceInCad: number;
+    featuredPhotoURL: string;
+    isMeetUpOnly: boolean;
+    isNew: boolean;
+    category: Product_Category;
+    tags: Product_Tag;
+};
+
+interface Product_Category {
+    id: number;
+    name: string;
+    createdAt: Date;
+    updatedAt: Date | null;
+};
+
+interface Product_Tag {
+    id: number;
+    name: string;
+    createdAt: Date;
+    updatedAt: Date | null;
+    productId: number;
+};

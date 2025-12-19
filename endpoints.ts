@@ -29,14 +29,21 @@ export const sellerEndpoint = {
     profile: `${baseUrl}/seller/profile`
 };
 
-const storeBaseUrl = `${baseUrl}/store`;
+const storeBaseUrl = `/server/store`;
 
 export const storeEndpoint = {
-    profile: `${baseUrl}/store/`
+    profile: `${baseUrl}/store/`,
+    create: `${storeBaseUrl}/create`
 }
 
 const storeCategoryBaseUrl = `/server/store-category`;
 
 export const storeCategoryEndpoint = {
     list: `${storeCategoryBaseUrl}/list`
+}
+
+const productBaseUrl = `/server/product`;
+
+export const productEndpoint = {
+    list: `${productBaseUrl}/list`
 }

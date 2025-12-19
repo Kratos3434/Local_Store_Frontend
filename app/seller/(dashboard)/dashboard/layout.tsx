@@ -1,3 +1,4 @@
+import SellerDashboardNavbar from "@/components/SellerDashboardNavbar";
 import { getStoreProfile } from "@/controller/store.controller";
 import { SELLER_SESSION_TOKEN, Store } from "@/data";
 import { cookies } from "next/headers";
@@ -25,9 +26,10 @@ const SellerDashboardLayout = async ({ children }: { children: React.ReactNode }
     }
 
     return (
-        <>
+        <div className="pl-40 pr-2">
+            <SellerDashboardNavbar />
             {children}
-        </>
+        </div>
     )
 }
 
