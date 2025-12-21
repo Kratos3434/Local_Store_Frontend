@@ -26,7 +26,7 @@ const SellerDashboardLayout = async ({ children }: { children: React.ReactNode }
     }
 
     return (
-        <div className="pl-40 pr-2">
+        <div className="sm:pl-40 max-sm:pt-[60px] pl-2 pr-2">
             <SellerDashboardNavbar />
             {children}
         </div>

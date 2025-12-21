@@ -6,7 +6,7 @@ import { Edit } from "@mui/icons-material"
 const ProductCard = ({product}: {product: Product}) => {
     return (
         <div className="w-full max-w-[300px] rounded-md bg-indigo-500 text-white">
-            <img width={200} height={300} className="w-full h-[300px] rounded-t-md p-2" src={product.featuredPhotoURL} />
+            <img width={200} height={300} className="w-full h-[300px] rounded-t-xl p-2" src={product.featuredPhotoURL} />
             <div className="px-4 pb-5">
                 <hr className="my-2" />
                 <p className="font-bold">
