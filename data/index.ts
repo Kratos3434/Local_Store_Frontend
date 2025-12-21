@@ -76,7 +76,7 @@ export interface ProductDTO {
     description: string;
     priceInCad: number;
     isNew: boolean;
-    featuredPhotoURL: string;
+    featuredPhotoURL: FileList;
     isMeetUpOnly: boolean;
     quantity: number;
     category: string;
@@ -99,7 +99,7 @@ export interface Product {
     tags: Product_Tag;
 };
 
-interface Product_Category {
+export interface Product_Category {
     id: number;
     name: string;
     createdAt: Date;
