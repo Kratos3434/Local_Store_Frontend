@@ -15,7 +15,7 @@ const Products = () => {
     });
 
     return (
-        <div className="mt-5">
+        <div className="my-3">
             <div className="flex items-center gap-5 flex-wrap">
                 <h1 className="text-3xl font-bold">Products</h1>
                 <Link href="/seller/dashboard/products/add-product" className="bg-indigo-500 px-4 py-2 rounded-md text-white font-bold hover:brightness-95 flex items-center gap-2">

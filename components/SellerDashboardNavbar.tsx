@@ -46,8 +46,8 @@ const SellerDashboardNavbar = () => {
             {
                 openMenu &&
                 (
-                    <div className="fixed top-0 w-full h-dvh bg-[rgba(0,0,0,0.5)] flex justify-start sm:hidden ">
-                        <div className="flex flex-col gap-5 bg-indigo-500 px-2 py-4">
+                    <div className="fixed top-0 w-full h-dvh bg-[rgba(0,0,0,0.5)] flex justify-start sm:hidden" onClick={() => setOpenMenu(false)}>
+                        <div className="flex flex-col gap-5 bg-indigo-500 px-2 py-4" onClick={e => e.stopPropagation()}>
                             <div>
                                 <button onClick={() => setOpenMenu(false)}>
                                     <Close />

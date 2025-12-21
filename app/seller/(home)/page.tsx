@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const SellerPage = () => {
     return (
-        <div className="h-dvh w-full bg-indigo-500 p-4 py-10 flex justify-center items-center">
+        <div className="max-md:h-dvh w-full bg-indigo-500 p-4 py-10 flex justify-center items-center">
             <div>
                 <h1 className="sm:text-4xl font-bold text-white text-center">
                     Become a Local Store Seller
