@@ -65,6 +65,5 @@ export const getProductById = async (productId: number): Promise<Product | null>
         url: productEndpoint.getProduct(productId),
         method: 'GET',
     });
-
     return res.data;
 }
