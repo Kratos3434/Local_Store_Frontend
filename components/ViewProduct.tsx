@@ -1,0 +1,81 @@
+'use client'
+
+import { getProductById } from "@/controller/product.controller";
+import { Product } from "@/data";
+import { Delete, Edit, SentimentDissatisfied } from "@mui/icons-material";
+import { CircularProgress } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+
+const ViewProduct = ({ productId }: { productId: number }) => {
+    const { status, data: product } = useQuery({
+        queryKey: [`product-${productId}`],
+        queryFn: () => getProductById(productId)
+    });
+
+    if (status === 'error') {
+        return <p className="font-bold text-xl">Sorry, something went wrong while retrieveing the product</p>
+    }
+
+    if (status === 'pending') {
+        return (
+            <div className="flex justify-center text-xl mt-10">
+                <CircularProgress />
+            </div>
+        );
+    }
+
+    if (!product) {
+        return (
+            <div className="flex w-full justify-center mt-10 flex-col gap-5 items-center text-xl">
+                <div className="text-8xl text-red-500">
+                    <SentimentDissatisfied fontSize="inherit" />
+                </div>
+                <p className="">This product does not exist</p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="flex justify-center mt-10 gap-10 flex-wrap">
+            <div className="flex flex-col justify-center">
+                <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} />
+            </div>
+            <div className="w-full max-w-[300px]">
+                <h1 className="font-bold text-3xl">
+                    {product.name}
+                </h1>
+                <hr className="my-5" />
+                <p className="text-xl">
+                    ${product.priceInCad}
+                </p>
+                <hr className="my-5" />
+                <p className="font-bold">Description</p>
+                <p className="mt-3">
+                    {product.description}
+                </p>
+                <hr className="my-3" />
+                <p className="font-bold">
+                    In Stock: <span>{product.quantity}</span>
+                </p>
+                <hr className="my-5" />
+                <div className="flex gap-3 text-white">
+                    <Link href={`/seller/dashboard/products/${product.id}/edit`} className="w-full flex justify-center items-center gap-2 p-2 rounded-md bg-green-500 hover:brightness-95 cursor-pointer">
+                        <Edit />
+                        <p>
+                            Edit
+                        </p>
+                    </Link>
+                    <button className="w-full flex justify-center items-center gap-2 p-2 rounded-md bg-red-500 hover:brightness-95 cursor-pointer">
+                        <Delete />
+                        <p>
+                            Delete
+                        </p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default ViewProduct;

@@ -59,3 +59,12 @@ export const addProduct = async (data: ProductDTO) => {
 
     return true;
 }
+
+export const getProductById = async (productId: number): Promise<Product | null> => {
+    const res = await createRequest({
+        url: productEndpoint.getProduct(productId),
+        method: 'GET',
+    });
+
+    return res.data;
+}

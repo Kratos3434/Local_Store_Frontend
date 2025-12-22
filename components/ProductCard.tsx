@@ -1,7 +1,8 @@
 'use client'
 
 import { Product } from "@/data"
-import { Edit } from "@mui/icons-material"
+import { Visibility } from "@mui/icons-material"
+import Link from "next/link";
 
 const ProductCard = ({product}: {product: Product}) => {
     return (
@@ -15,13 +16,16 @@ const ProductCard = ({product}: {product: Product}) => {
                 <p className="mt-5">
                     {product.name}
                 </p>
+                <p className="mt-3">
+                    In stock: <b>{product.quantity}</b>
+                </p>
                 <div className="mt-5">
-                    <button className="w-full flex justify-center items-center gap-2 p-2 rounded-md bg-green-400 hover:brightness-95 cursor-pointer">
-                        <Edit />
+                    <Link href={`/seller/dashboard/products/${product.id}`} className="w-full flex justify-center items-center gap-2 p-2 rounded-md bg-green-400 hover:brightness-95 cursor-pointer">
+                        <Visibility />
                         <p>
-                            Edit
+                            View
                         </p>
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

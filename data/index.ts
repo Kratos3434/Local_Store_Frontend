@@ -92,6 +92,7 @@ export interface Product {
     categoryId: number;
     storeId: number;
     priceInCad: number;
+    quantity: number;
     featuredPhotoURL: string;
     isMeetUpOnly: boolean;
     isNew: boolean;
