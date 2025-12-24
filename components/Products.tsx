@@ -56,7 +56,7 @@ const Products = () => {
                                                     data.map((e, idx) => {
                                                         return (
                                                             <Fragment key={idx}>
-                                                                <ProductCard product={e} />
+                                                                <ProductCard product={e} canView />
                                                             </Fragment>
                                                         );
                                                     })

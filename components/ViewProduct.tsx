@@ -37,7 +37,7 @@ const ViewProduct = ({ productId }: { productId: number }) => {
     }
 
     return (
-        <div className="flex justify-center mt-10 gap-10 flex-wrap">
+        <div className="flex justify-center mt-10 gap-10 flex-wrap pb-10">
             <div className="flex flex-col justify-center">
                 <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} />
             </div>
@@ -54,9 +54,13 @@ const ViewProduct = ({ productId }: { productId: number }) => {
                 <p className="mt-3">
                     {product.description}
                 </p>
-                <hr className="my-3" />
+                <hr className="my-5" />
                 <p className="font-bold">
                     In Stock: <span>{product.quantity}</span>
+                </p>
+                <hr className="my-5" />
+                <p className="font-bold">
+                    Condition: <span>{product.isNew ? "New" : "Used"}</span>
                 </p>
                 <hr className="my-5" />
                 <div className="flex gap-3 text-white">

@@ -30,7 +30,7 @@ const SellerSignup = () => {
     }
 
     return (
-        <div className="w-full max-md:h-dvh py-2 bg-indigo-500 flex justify-center items-center">
+        <div className="w-full max-sm:h-dvh md:h-dvh py-2 bg-indigo-500 flex justify-center items-center">
             <div className="w-full max-w-[500px] bg-white rounded-md shadow-lg py-4 px-4">
                 <h1 className="text-3xl font-bold">
                     Seller Sign up
