@@ -48,10 +48,12 @@ export const productEndpoint = {
     list: `${productBaseUrl}/list`,
     getProduct: (productId: number) => `${productBaseUrl}/list/${productId}`,
     create: `${productBaseUrl}/create`,
-}
+    getProductByCity: (city: string) => `${productBaseUrl}/city/${city}` ,
+    listAll: `${productBaseUrl}/public/list`
+};
 
 const productCategoryBaseUrl = `/server/product-category`;
 
 export const productCategoryEndpoint = {
     list: `${productCategoryBaseUrl}/list`,
-}
+};

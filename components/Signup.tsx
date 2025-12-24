@@ -5,18 +5,22 @@ import SecureInput from "@/components/SecureInput";
 import SubmitButton from "@/components/SubmitButton";
 import { signup } from "@/controller/auth.controller";
 import { SignupDTO } from "@/data";
+import { getCities } from "@/data/canada-cities";
+import { provinceOptions } from "@/data/canada-province";
 import { Launch } from "@mui/icons-material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Select from "react-select";
 
 const Signup = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<SignupDTO>();
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm<SignupDTO>();
 
     const [loading, isLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const router = useRouter();
+    const [selectedProvince, setSelectedProvince] = useState("");
 
     const handleSignup = async (data: SignupDTO) => {
         isLoading(true);
@@ -31,7 +35,7 @@ const Signup = () => {
     }
 
     return (
-        <div className="w-full h-dvh bg-indigo-500 flex justify-center items-center flex-col">
+        <div className="w-full md:h-dvh  bg-indigo-500 flex justify-center items-center flex-col py-4">
             <div className="w-full max-w-[500px] bg-white rounded-md shadow-lg py-4 px-4">
                 <h1 className="text-3xl font-bold">
                     Sign up
@@ -41,6 +45,31 @@ const Signup = () => {
                     <Input label="Email" type="email" register={register('email', { required: "email is required" })} errorMessage={errors.email && errors.email.message} />
                     <Input label="First name" type="text" register={register('firstName', { required: "first name is required" })} errorMessage={errors.firstName && errors.firstName.message} />
                     <Input label="Last name" type="text" register={register('lastName', { required: "last name is required" })} errorMessage={errors.lastName && errors.lastName.message} />
+                    <div className="my-5">
+                        <div className="mt-3">
+                            <label>
+                                Province
+                            </label>
+                            <Select options={provinceOptions} onChange={(selected) => {
+                                if (selected) {
+                                    setValue('province', selected.value);
+                                    setSelectedProvince(selected.value);
+                                }
+                            }} className="mt-3" />
+                        </div>
+                        <div className="mt-3">
+                            <label>
+                                City
+                            </label>
+                            <Select options={
+                                !selectedProvince ? [{ value: "", label: "Please select a province" }] : getCities(selectedProvince)
+                            } onChange={(selected) => {
+                                if (selected) {
+                                    setValue('city', selected.value);
+                                }
+                            }} className="mt-3" isDisabled={selectedProvince ? false : true} />
+                        </div>
+                    </div>
                     <SecureInput label="Password" register={register('password', { required: "password is required" })} errorMessage={errors.password && errors.password.message} />
                     <SecureInput label="Confirm password" register={register('password2', { required: "please confirm your password" })} errorMessage={errors.password2 && errors.password2.message} />
                     <div className="flex flex-col items-center mt-10">

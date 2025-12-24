@@ -67,3 +67,21 @@ export const getProductById = async (productId: number): Promise<Product | null>
     });
     return res.data;
 }
+
+export const getProductsByCity = async (city: string): Promise<Product[]> => {
+    const res = await createRequest({
+        url: productEndpoint.getProductByCity(city),
+        method: "GET"
+    });
+
+    return res.data;
+}
+
+export const getAllProducts = async (): Promise<Product[]> => {
+    const res = await createRequest({
+        url: productEndpoint.listAll,
+        method: "GET"
+    });
+
+    return res.data;
+}

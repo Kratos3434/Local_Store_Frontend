@@ -10,7 +10,9 @@ export interface SignupDTO {
     firstName: string,
     lastName: string,
     password: string,
-    password2: string
+    password2: string,
+    city: string,
+    province: string,
 }
 
 export const USER_SESSION_TOKEN = "USER_SESSION_TOKEN";
@@ -26,6 +28,8 @@ export interface UserDTO {
     email: string;
     createdAt: Date;
     updatedAt: Date | null;
+    city: string;
+    province: string;
 };
 
 export interface Store {
