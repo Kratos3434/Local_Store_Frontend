@@ -102,6 +102,7 @@ export interface Product {
     isNew: boolean;
     category: Product_Category;
     tags: Product_Tag;
+    store: Store;
 };
 
 export interface Product_Category {
@@ -117,4 +118,14 @@ interface Product_Tag {
     createdAt: Date;
     updatedAt: Date | null;
     productId: number;
+};
+
+export interface Create_Order {
+    productId: number;
+    statusName: string;
+    preferredMeetingPlace: string;
+    notes: string | null;
+    preferredMeetupDate: Date;
+    contactNumber: string;
+    quantity: number;
 };

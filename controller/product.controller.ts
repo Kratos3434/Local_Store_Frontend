@@ -85,3 +85,12 @@ export const getAllProducts = async (): Promise<Product[]> => {
 
     return res.data;
 }
+
+export const getPublicProductById = async (productId: number): Promise<Product | null> => {
+    const res = await createRequest({
+        url: productEndpoint.getPublicProduct(productId),
+        method: 'GET'
+    });
+
+    return res.data;
+}

@@ -49,7 +49,8 @@ export const productEndpoint = {
     getProduct: (productId: number) => `${productBaseUrl}/list/${productId}`,
     create: `${productBaseUrl}/create`,
     getProductByCity: (city: string) => `${productBaseUrl}/city/${city}` ,
-    listAll: `${productBaseUrl}/public/list`
+    listAll: `${productBaseUrl}/public/list`,
+    getPublicProduct: (productId: number) => `${productBaseUrl}/public/list/${productId}`,
 };
 
 const productCategoryBaseUrl = `/server/product-category`;
