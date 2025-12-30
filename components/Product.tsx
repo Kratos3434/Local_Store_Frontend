@@ -40,7 +40,7 @@ const Product = ({productId}: {productId: number}) => {
     }
 
     return (
-        <div className="flex justify-center mt-10 gap-10 flex-wrap pb-10">
+        <div className="flex justify-center md:mt-10 mt-5 gap-10 flex-wrap pb-10">
             <div className="flex flex-col justify-center">
                 <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} />
             </div>

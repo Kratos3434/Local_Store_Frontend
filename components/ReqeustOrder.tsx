@@ -36,7 +36,7 @@ const RequestOrder = ({ product, closer }: { product: Product, closer: any }) =>
     }
 
     return (
-        <div className="w-full max-w-[600px] h-[865px] bg-white shadow-lg rounded-md py-2 px-4 pb-5 overflow-y-auto">
+        <div className="w-full max-w-[600px] max-h-[865px] h-full bg-white shadow-lg rounded-md py-2 px-4 pb-5 overflow-y-auto">
             <div className="flex justify-end items-center sticky top-0">
                 <button className="cursor-pointer" onClick={() => { closer(false) }}>
                     <Close />
