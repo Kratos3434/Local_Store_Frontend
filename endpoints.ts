@@ -58,3 +58,9 @@ const productCategoryBaseUrl = `/server/product-category`;
 export const productCategoryEndpoint = {
     list: `${productCategoryBaseUrl}/list`,
 };
+
+const orderBaseUrl = `/server/order`;
+
+export const orderEndpoint = {
+    create: `${orderBaseUrl}/create`
+};

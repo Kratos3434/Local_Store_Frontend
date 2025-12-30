@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export interface ResponsePayload {
     status: boolean;
     statusCode: number;
@@ -122,7 +124,6 @@ interface Product_Tag {
 
 export interface Create_Order {
     productId: number;
-    statusName: string;
     preferredMeetingPlace: string;
     notes: string | null;
     preferredMeetupDate: Date;

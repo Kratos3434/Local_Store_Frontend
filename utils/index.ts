@@ -20,3 +20,28 @@ export const errorMessage = (message: string) => {
         message
     }
 }
+
+export function isDateTodayOrPast(input: Date | string): boolean {
+  const date = new Date(input);
+  if (isNaN(date.getTime())) return false;
+
+  const today = new Date();
+  
+  // Normalize both to start of day (local time)
+  date.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+
+  return date <= today;
+}
+
+export function isTimeBetween8pmAnd7am(date: Date): boolean {
+  const hours = date.getHours(); // 0–23
+
+  return hours >= 20 || hours < 7;
+}
+
+export function isValidPhoneNumber(phone: string): boolean {
+  return /^(\+1)?[2-9]\d{2}[2-9]\d{2}\d{4}$/.test(
+    phone.replace(/\D/g, "")
+  );
+}
