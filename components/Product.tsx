@@ -8,7 +8,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import RequestOrder from "./ReqeustOrder";
 
-const Product = ({productId}: {productId: number}) => {
+const Product = ({ productId }: { productId: number }) => {
     const { status, data: product } = useQuery({
         queryKey: [`public-product-${productId}`],
         queryFn: () => getPublicProductById(productId)
@@ -70,8 +70,9 @@ const Product = ({productId}: {productId: number}) => {
                     <b>Sold by:</b> {product.store.name}
                 </p>
                 <hr className="my-5" />
-                <button className="w-full p-2 py-4 rounded-full bg-indigo-500 text-white font-bold hover:brightness-95 cursor-pointer" onClick={() => setOpenOrderRequest(true)}>
-                    Order now
+                <button className={`w-full p-2 py-4 rounded-full bg-indigo-500 text-white font-bold hover:brightness-95 ${product.quantity === 0 && "brightness-75"} ${product.quantity === 0 ? "cursor-not-allowed" : "cursor-pointer"}`} onClick={() => setOpenOrderRequest(true)}
+                    disabled={product.quantity === 0 ? true : false}>
+                    {product.quantity === 0 ? "Out of stock" : "Order now"}
                 </button>
             </div>
             {

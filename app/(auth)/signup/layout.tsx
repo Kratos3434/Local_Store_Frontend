@@ -1,6 +1,6 @@
 
 export const metadata = {
-  title: "Local Store | Sign up",
+  title: "Sign up | Local Store",
   description: "Local Store sign up page",
 };
 

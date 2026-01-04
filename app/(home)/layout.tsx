@@ -4,7 +4,7 @@ import { USER_SESSION_TOKEN, UserDTO } from "@/data";
 import { cookies } from "next/headers";
 
 export const metadata = {
-  title: "Local Store | Home",
+  title: "Home | Local Store",
   description: "Browse hundreds of new and used items from your local area",
 };
 

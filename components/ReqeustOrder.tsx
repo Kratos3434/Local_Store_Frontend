@@ -10,6 +10,7 @@ import { useState } from "react";
 import SubmitButton from "./SubmitButton";
 import Link from "next/link";
 import { requestOrder } from "@/controller/order.controller";
+import { useQueryClient } from "@tanstack/react-query";
 
 const RequestOrder = ({ product, closer }: { product: Product, closer: any }) => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<Create_Order>({
@@ -22,12 +23,16 @@ const RequestOrder = ({ product, closer }: { product: Product, closer: any }) =>
     const [errorMessage, setErrorMessage] = useState("");
     const [currentQuantity, setCurrentQuantity] = useState(0);
     const [showMessage, setShowMessage] = useState(false);
+    const queryClient = useQueryClient();
 
     const handleRequestOrder = async (data: Create_Order) => {
         isLoading(true);
         setErrorMessage("");
         try {
             await requestOrder(data);
+            await queryClient.invalidateQueries({
+                queryKey: [`public-product-${product.id}`],
+            });
             setShowMessage(true);
         } catch (err: any) {
             setErrorMessage(err.message);

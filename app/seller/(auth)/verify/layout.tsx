@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Local Store | Verify Seller",
+  title: "Verify Seller | Local Store",
   description: "Local Store verify seller page",
 };
 

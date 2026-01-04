@@ -94,3 +94,13 @@ export const getPublicProductById = async (productId: number): Promise<Product |
 
     return res.data;
 }
+
+export const getProductMetadataById = async (productId: number, cookie: string): Promise<Product | null> => {
+    const res = await createRequest({
+        url: productEndpoint.getPublicProductMetadata(productId),
+        method: 'GET',
+        cookie,
+    });
+
+    return res.data;
+}
