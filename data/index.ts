@@ -34,6 +34,21 @@ export interface UserDTO {
     province: string;
 };
 
+export interface User {
+    id: number;
+    email: string;
+    profile: User_Profile;
+};
+
+export interface User_Profile {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date | null;
+    userId: number;
+    firstName: string;
+    lastName: string;
+}
+
 export interface Store {
     id: number;
     createdAt: Date;
@@ -130,3 +145,36 @@ export interface Create_Order {
     contactNumber: string;
     quantity: number;
 };
+
+export interface Order {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date | null;
+    storeId: number;
+    productId: number;
+    userId: number;
+    statusId: number;
+    product: Product;
+    user: User;
+    details: Order_Details;
+    status: Order_Status;
+}
+
+interface Order_Details {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date | null;
+    quantity: number;
+    contactNumber: string;
+    preferredMeetingPlace: string;
+    preferredMeetupDate: Date;
+    notes: string | null;
+    orderId: number;
+};
+
+interface Order_Status {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date | null;
+    status: string;
+}

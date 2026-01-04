@@ -63,5 +63,6 @@ export const productCategoryEndpoint = {
 const orderBaseUrl = `/server/order`;
 
 export const orderEndpoint = {
-    create: `${orderBaseUrl}/create`
+    create: `${orderBaseUrl}/create`,
+    sellerOrders: `${orderBaseUrl}/list/seller`
 };

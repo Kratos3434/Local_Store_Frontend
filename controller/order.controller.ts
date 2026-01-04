@@ -1,4 +1,4 @@
-import { Create_Order } from "@/data";
+import { Create_Order, Order } from "@/data";
 import { orderEndpoint } from "@/endpoints";
 import { errorMessage, isDateTodayOrPast, isTimeBetween8pmAnd7am, isValidPhoneNumber } from "@/utils";
 import { createRequest } from "@/utils/createRequest";
@@ -20,4 +20,31 @@ export const requestOrder = async (data: Create_Order) => {
     });
 
     return true;
+}
+
+export const getSellerOrders = async (): Promise<Order[]> => {
+    const res = await createRequest({
+        url: orderEndpoint.sellerOrders,
+        method: 'GET'
+    });
+
+    return res.data;
+}
+
+export const getSellerPendingOrders = async (): Promise<Order[]> => {
+    const res = await createRequest({
+        url: `${orderEndpoint.sellerOrders}?filter=pending`,
+        method: 'GET'
+    });
+
+    return res.data;
+}
+
+export const getSellerCompleteOrders = async (): Promise<Order[]> => {
+    const res = await createRequest({
+        url: `${orderEndpoint.sellerOrders}?filter=complete`,
+        method: 'GET'
+    });
+
+    return res.data;
 }

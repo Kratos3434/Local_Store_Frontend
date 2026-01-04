@@ -1,6 +1,6 @@
 'use client'
 
-import { Close, Cottage, Inventory, Menu } from "@mui/icons-material";
+import { Bento, Close, Cottage, Inventory, Menu } from "@mui/icons-material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -21,6 +21,11 @@ const SellerDashboardNavbar = () => {
             url: `${baseUrl}/products`,
             title: "Products",
             icon: <Inventory />
+        },
+        {
+            url: `${baseUrl}/orders`,
+            title: "Orders",
+            icon: <Bento />
         }
     ]
 
