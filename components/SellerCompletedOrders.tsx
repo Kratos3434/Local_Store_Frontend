@@ -40,39 +40,41 @@ const SellerCompletedOrders = () => {
             {
                 data.length > 0 ?
                     (
-                        <table border={1} className="w-full">
-                            <thead>
-                                <tr>
-                                    <th>Order #</th>
-                                    <th>Quantity</th>
-                                    <th>Ordered by (email)</th>
-                                    <th>Date ordered</th>
-                                    {/* <th>Amount owed</th> */}
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    data.map((e, idx) => {
-                                        return (
-                                            <tr key={idx} className="text-sm">
-                                                <td>{e.id}</td>
-                                                <td>{e.details.quantity}</td>
-                                                <td>{e.user.profile.firstName} {e.user.profile.lastName} ({e.user.email})</td>
-                                                <td>{new Date(e.createdAt).toUTCString()}</td>
-                                                <td>{e.status.status}</td>
-                                                <td>
-                                                    <Link href={`/seller/dashboard/orders/${e.id}`} className="text-blue-500 hover:underline">
-                                                        view
-                                                    </Link>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })
-                                }
-                            </tbody>
-                        </table>
+                        <div className="overflow-x-auto">
+                            <table border={1} className="w-[1200px] border">
+                                <thead>
+                                    <tr>
+                                        <th>Order #</th>
+                                        <th>Quantity</th>
+                                        <th>Ordered by (email)</th>
+                                        <th>Date ordered</th>
+                                        {/* <th>Amount owed</th> */}
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        data.map((e, idx) => {
+                                            return (
+                                                <tr key={idx} className="text-sm">
+                                                    <td>{e.id}</td>
+                                                    <td>{e.details.quantity}</td>
+                                                    <td>{e.user.profile.firstName} {e.user.profile.lastName} ({e.user.email})</td>
+                                                    <td>{new Date(e.createdAt).toUTCString()}</td>
+                                                    <td>{e.status.status}</td>
+                                                    <td>
+                                                        <Link href={`/seller/dashboard/orders/${e.id}`} className="text-blue-500 hover:underline">
+                                                            view
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     ) :
                     (
                         <p>No completed orders yet.</p>

@@ -57,7 +57,7 @@ const SellerAllOrders = () => {
                                     {
                                         data.map((e, idx) => {
                                             return (
-                                                <tr key={idx} className="">
+                                                <tr key={idx} className="text-sm">
                                                     <td>{e.id}</td>
                                                     <td>{e.details.quantity}</td>
                                                     <td>{e.user.profile.firstName} {e.user.profile.lastName} ({e.user.email})</td>
