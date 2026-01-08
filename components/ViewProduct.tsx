@@ -1,13 +1,11 @@
 'use client'
 
 import { getProductById, restockProduct } from "@/controller/product.controller";
-import { Product } from "@/data";
-import { Add, Check, Delete, Edit, SentimentDissatisfied } from "@mui/icons-material";
+import { Add, Delete, Edit, SentimentDissatisfied } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { useState } from "react";
-import SubmitButton from "./SubmitButton";
 
 const ViewProduct = ({ productId }: { productId: number }) => {
     const { status, data: product } = useQuery({
@@ -31,6 +29,7 @@ const ViewProduct = ({ productId }: { productId: number }) => {
         } catch (err) {
             console.log(err);
         }
+        isLoading(false);
     }
 
     if (status === 'error') {
@@ -83,7 +82,7 @@ const ViewProduct = ({ productId }: { productId: number }) => {
                                     In Stock: <span>{product.quantity}</span>
                                 </p>
                                 <button className="bg-indigo-500 p-1 px-2 text-white rounded-md cursor-pointer" onClick={() => {
-                                    setCurrentStock(product.quantity);
+                                    setCurrentStock(0);
                                     setRestockProduct(true);
                                 }}>
                                     restock
@@ -91,7 +90,7 @@ const ViewProduct = ({ productId }: { productId: number }) => {
                             </div>
                         ) :
                         (
-                            <form className="flex gap-3 justify-between items-center" onSubmit={async (e) => {
+                            <form className="" onSubmit={async (e) => {
                                 e.preventDefault();
                                 await handleRestockProduct(product.id, currentStock);
                             }}>
@@ -106,9 +105,9 @@ const ViewProduct = ({ productId }: { productId: number }) => {
                                         <Add />
                                     </div>
                                 </div>
-                                <div className="flex gap-3 items-center text-sm">
+                                <div className="flex gap-3 items-center text-sm mt-5">
                                     <button className="bg-green-500 text-white p-1 px-2 rounded-md cursor-pointer" disabled={loading}>
-                                        <Check />
+                                        restock
                                     </button>
                                     <div className="bg-red-500 text-white p-1 px-2 rounded-md cursor-pointer" onClick={() => setRestockProduct(false)}>
                                         cancel
