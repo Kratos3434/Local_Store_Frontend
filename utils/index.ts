@@ -45,3 +45,17 @@ export function isValidPhoneNumber(phone: string): boolean {
     phone.replace(/\D/g, "")
   );
 }
+
+export function formatDate(date: Date): string {
+  // Use toLocaleString for month, day, hour, minute, AM/PM
+  const formatted = date.toLocaleString('en-US', {
+    month: 'short',     // Jan, Feb, etc.
+    day: 'numeric',     // 1, 2, 3...
+    hour: 'numeric',    // 12-hour clock
+    minute: '2-digit',  // 00, 05, etc.
+    hour12: true        // AM/PM
+  });
+
+  // Replace the comma with " on"
+  return formatted.replace(',', ' on');
+}

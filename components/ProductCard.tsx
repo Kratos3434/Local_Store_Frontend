@@ -9,7 +9,7 @@ const ProductCard = ({ product, canView }: { product: Product, canView?: boolean
         canView ?
             (
                 <div className="w-full sm:max-w-[250px] rounded-md bg-indigo-500 text-white">
-                    <img width={200} height={250} className="w-full h-[250px] rounded-t-xl p-2" src={product.featuredPhotoURL} />
+                    <img width={200} height={250} className="w-full h-[250px] rounded-t-xl p-2" src={product.featuredPhotoURL} alt={product.name} />
                     <div className="px-4 pb-5">
                         <hr className="my-2" />
                         <p className="font-bold ttext-xl">
@@ -42,7 +42,7 @@ const ProductCard = ({ product, canView }: { product: Product, canView?: boolean
             ) :
             (
                 <Link href={`/product/${product.id}`} className="w-full sm:max-w-[250px] rounded-md bg-indigo-500 text-white">
-                    <img width={200} height={250} className="w-full h-[250px] rounded-t-xl p-2" src={product.featuredPhotoURL} />
+                    <img width={200} height={250} className="w-full h-[250px] rounded-t-xl p-2" src={product.featuredPhotoURL} alt={product.name} />
                     <div className="px-4 pb-5">
                         <hr className="my-2" />
                         <p className="font-bold ttext-xl">

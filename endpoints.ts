@@ -47,6 +47,7 @@ const productBaseUrl = `/server/product`;
 export const productEndpoint = {
     list: `${productBaseUrl}/list`,
     getProduct: (productId: number) => `${productBaseUrl}/list/${productId}`,
+    restock: (productId: number) => `${productBaseUrl}/restock/${productId}`,
     create: `${productBaseUrl}/create`,
     getProductByCity: (city: string) => `${productBaseUrl}/city/${city}` ,
     listAll: `${productBaseUrl}/public/list`,

@@ -1,17 +1,37 @@
 'use client'
 
-import { getProductById } from "@/controller/product.controller";
+import { getProductById, restockProduct } from "@/controller/product.controller";
 import { Product } from "@/data";
-import { Delete, Edit, SentimentDissatisfied } from "@mui/icons-material";
+import { Add, Check, Delete, Edit, SentimentDissatisfied } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
+import { useState } from "react";
+import SubmitButton from "./SubmitButton";
 
 const ViewProduct = ({ productId }: { productId: number }) => {
     const { status, data: product } = useQuery({
         queryKey: [`product-${productId}`],
         queryFn: () => getProductById(productId)
     });
+
+    const [isRestockProduct, setRestockProduct] = useState(false);
+    const [currentStock, setCurrentStock] = useState(-1);
+    const [loading, isLoading] = useState(false);
+    const queryClient = useQueryClient();
+
+    const handleRestockProduct = async (productId: number, additionalStock: number) => {
+        isLoading(true);
+        try {
+            await restockProduct(productId, additionalStock);
+            await queryClient.invalidateQueries({
+                queryKey: [`product-${productId}`],
+            });
+            setRestockProduct(false);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     if (status === 'error') {
         return <p className="font-bold text-xl">Sorry, something went wrong while retrieveing the product</p>
@@ -39,7 +59,7 @@ const ViewProduct = ({ productId }: { productId: number }) => {
     return (
         <div className="flex justify-center mt-10 gap-10 flex-wrap pb-10">
             <div className="flex flex-col justify-center">
-                <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} />
+                <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} alt={product.name} />
             </div>
             <div className="w-full max-w-[300px]">
                 <h1 className="font-bold text-3xl">
@@ -55,9 +75,48 @@ const ViewProduct = ({ productId }: { productId: number }) => {
                     {product.description}
                 </p>
                 <hr className="my-5" />
-                <p className="font-bold">
-                    In Stock: <span>{product.quantity}</span>
-                </p>
+                {
+                    !isRestockProduct ?
+                        (
+                            <div className="flex gap-3 items-center">
+                                <p className="font-bold">
+                                    In Stock: <span>{product.quantity}</span>
+                                </p>
+                                <button className="bg-indigo-500 p-1 px-2 text-white rounded-md cursor-pointer" onClick={() => {
+                                    setCurrentStock(product.quantity);
+                                    setRestockProduct(true);
+                                }}>
+                                    restock
+                                </button>
+                            </div>
+                        ) :
+                        (
+                            <form className="flex gap-3 justify-between items-center" onSubmit={async (e) => {
+                                e.preventDefault();
+                                await handleRestockProduct(product.id, currentStock);
+                            }}>
+                                <div className="flex gap-3">
+                                    <p className="font-bold">
+                                        In Stock: <span>{product.quantity}</span>
+                                    </p>
+                                    <div className="border px-2 rounded-md">
+                                        + {currentStock}
+                                    </div>
+                                    <div className="bg-indigo-500 text-white rounded-md px-1 cursor-pointer" onClick={() => setCurrentStock(currentStock + 1)}>
+                                        <Add />
+                                    </div>
+                                </div>
+                                <div className="flex gap-3 items-center text-sm">
+                                    <button className="bg-green-500 text-white p-1 px-2 rounded-md cursor-pointer" disabled={loading}>
+                                        <Check />
+                                    </button>
+                                    <div className="bg-red-500 text-white p-1 px-2 rounded-md cursor-pointer" onClick={() => setRestockProduct(false)}>
+                                        cancel
+                                    </div>
+                                </div>
+                            </form>
+                        )
+                }
                 <hr className="my-5" />
                 <p className="font-bold">
                     Condition: <span>{product.isNew ? "New" : "Used"}</span>

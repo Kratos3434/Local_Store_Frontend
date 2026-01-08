@@ -158,6 +158,8 @@ export interface Order {
     user: User;
     details: Order_Details;
     status: Order_Status;
+    amount: number;
+    amountAfterTax: number;
 }
 
 interface Order_Details {

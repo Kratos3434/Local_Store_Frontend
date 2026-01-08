@@ -104,3 +104,13 @@ export const getProductMetadataById = async (productId: number, cookie: string):
 
     return res.data;
 }
+
+export const restockProduct = async (productId: number, additionalStock: number) => {
+    await createRequest({
+        url: productEndpoint.restock(productId),
+        method: 'PUT',
+        body: {additionalStock}
+    });
+
+    return true;
+}

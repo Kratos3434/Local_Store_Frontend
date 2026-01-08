@@ -1,6 +1,7 @@
 'use client'
 
 import { getSellerPendingOrders } from "@/controller/order.controller";
+import { formatDate } from "@/utils";
 import { SentimentDissatisfied } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
@@ -48,7 +49,7 @@ const SellerPendingOrders = () => {
                                         <th>Quantity</th>
                                         <th>Ordered by (email)</th>
                                         <th>Date ordered</th>
-                                        {/* <th>Amount owed</th> */}
+                                        <th>Amount owed (CAD)</th>
                                         <th>Status</th>
                                         <th></th>
                                     </tr>
@@ -61,7 +62,8 @@ const SellerPendingOrders = () => {
                                                     <td>{e.id}</td>
                                                     <td>{e.details.quantity}</td>
                                                     <td>{e.user.profile.firstName} {e.user.profile.lastName} ({e.user.email})</td>
-                                                    <td>{new Date(e.createdAt).toUTCString()}</td>
+                                                    <td>{formatDate(new Date(e.createdAt))}</td>
+                                                    <td>${e.amount}</td>
                                                     <td>{e.status.status}</td>
                                                     <td>
                                                         <Link href={`/seller/dashboard/orders/${e.id}`} className="text-blue-500 hover:underline">

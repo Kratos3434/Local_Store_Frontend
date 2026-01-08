@@ -42,7 +42,7 @@ const Product = ({ productId }: { productId: number }) => {
     return (
         <div className="flex justify-center md:mt-10 mt-5 gap-10 flex-wrap pb-10">
             <div className="flex flex-col justify-center">
-                <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} />
+                <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} alt={product.name} />
             </div>
             <div className="w-full max-w-[300px]">
                 <h1 className="font-bold text-3xl">
@@ -72,7 +72,7 @@ const Product = ({ productId }: { productId: number }) => {
                 <hr className="my-5" />
                 <button className={`w-full p-2 py-4 rounded-full bg-indigo-500 text-white font-bold hover:brightness-95 ${product.quantity === 0 && "brightness-75"} ${product.quantity === 0 ? "cursor-not-allowed" : "cursor-pointer"}`} onClick={() => setOpenOrderRequest(true)}
                     disabled={product.quantity === 0 ? true : false}>
-                    {product.quantity === 0 ? "Out of stock" : "Order now"}
+                    {product.quantity === 0 ? "Out of stock" : "Order for Meetup"}
                 </button>
             </div>
             {
