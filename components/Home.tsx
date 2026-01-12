@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAtomValue } from "jotai";
 import { Fragment } from 'react';
 import ProductCard from "./ProductCard";
+import SignupNow from "./SignupNow";
 
 const Home = () => {
     const user = useAtomValue(userAtom);

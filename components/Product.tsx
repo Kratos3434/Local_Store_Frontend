@@ -7,6 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Modal from "./Modal";
 import RequestOrder from "./ReqeustOrder";
+import { useAtomValue, useSetAtom } from "jotai";
+import { openSignupBannerAtom, userAtom } from "@/store";
 
 const Product = ({ productId }: { productId: number }) => {
     const { status, data: product } = useQuery({
@@ -15,6 +17,8 @@ const Product = ({ productId }: { productId: number }) => {
     });
 
     const [openOrderRequest, setOpenOrderRequest] = useState(false);
+    const user = useAtomValue(userAtom);
+    const setOpenSignupBanner = useSetAtom(openSignupBannerAtom);
 
     if (status === 'error') {
         return <p className="font-bold text-xl">Sorry, something went wrong while retrieveing the product</p>
@@ -70,7 +74,13 @@ const Product = ({ productId }: { productId: number }) => {
                     <b>Sold by:</b> {product.store.name}
                 </p>
                 <hr className="my-5" />
-                <button className={`w-full p-2 py-4 rounded-full bg-indigo-500 text-white font-bold hover:brightness-95 ${product.quantity === 0 && "brightness-75"} ${product.quantity === 0 ? "cursor-not-allowed" : "cursor-pointer"}`} onClick={() => setOpenOrderRequest(true)}
+                <button className={`w-full p-2 py-4 rounded-full bg-indigo-500 text-white font-bold hover:brightness-95 ${product.quantity === 0 && "brightness-75"} ${product.quantity === 0 ? "cursor-not-allowed" : "cursor-pointer"}`} onClick={() => {
+                    if (user) {
+                        setOpenOrderRequest(true)
+                    } else {
+                        setOpenSignupBanner(true);
+                    }
+                }}
                     disabled={product.quantity === 0 ? true : false}>
                     {product.quantity === 0 ? "Out of stock" : "Order for Meetup"}
                 </button>
