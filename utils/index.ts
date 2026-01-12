@@ -57,5 +57,5 @@ export function formatDate(date: Date): string {
   });
 
   // Replace the comma with " on"
-  return formatted.replace(',', ' on');
+  return formatted.replace(',', ' at');
 }

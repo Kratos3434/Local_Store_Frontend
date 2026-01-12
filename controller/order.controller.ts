@@ -48,3 +48,39 @@ export const getSellerCompleteOrders = async (): Promise<Order[]> => {
 
     return res.data;
 }
+
+export const getSellerOrderById = async (orderId: number): Promise<Order | null> => {
+    const res = await createRequest({
+        url: orderEndpoint.getSellerOrder(orderId),
+        method: 'GET'
+    });
+
+    return res.data;
+}
+
+export const acceptOrderAsSeller = async (orderId: number) => {
+    await createRequest({
+        url: orderEndpoint.acceptAsSeller(orderId),
+        method: 'PUT'
+    });
+
+    return true;
+}
+
+export const declineOrderAsSeller = async (orderId: number) => {
+    await createRequest({
+        url: orderEndpoint.declineAsSeller(orderId),
+        method: 'PUT'
+    });
+
+    return true;
+}
+
+export const completeOrderAsSeller = async (orderId: number) => {
+    await createRequest({
+        url: orderEndpoint.complete(orderId),
+        method: 'PUT'
+    });
+
+    return true;
+}

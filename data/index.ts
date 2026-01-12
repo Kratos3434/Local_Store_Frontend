@@ -180,3 +180,13 @@ interface Order_Status {
     updatedAt: Date | null;
     status: string;
 }
+
+export enum EOrder_Status {
+    PENDING = "Pending",
+    COMPLETE = "Complete",
+    CANCELLED = "Cancelled",
+    NO_SHOW = "No Show",
+    ACCEPTED = "Accepted",
+    DECLINED = "Declined",
+    SHIPPED = "Shipped"
+};

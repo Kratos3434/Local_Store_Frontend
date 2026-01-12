@@ -65,5 +65,9 @@ const orderBaseUrl = `/server/order`;
 
 export const orderEndpoint = {
     create: `${orderBaseUrl}/create`,
-    sellerOrders: `${orderBaseUrl}/list/seller`
+    sellerOrders: `${orderBaseUrl}/list/seller`,
+    getSellerOrder: (orderId: number) => `${orderBaseUrl}/list/${orderId}`,
+    acceptAsSeller: (orderId: number) => `${orderBaseUrl}/accept/${orderId}`,
+    declineAsSeller: (orderId: number) => `${orderBaseUrl}/decline/${orderId}`,
+    complete: (orderId: number) => `${orderBaseUrl}/complete/${orderId}`,
 };
