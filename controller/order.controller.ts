@@ -84,3 +84,30 @@ export const completeOrderAsSeller = async (orderId: number) => {
 
     return true;
 }
+
+export const getUserOrders = async (): Promise<Order[]> => {
+    const res = await createRequest({
+        url: `${orderEndpoint.userOrders}?filter=all`,
+        method: 'GET'
+    });
+
+    return res.data;
+}
+
+export const getUserMeetupOrders = async (): Promise<Order[]> => {
+    const res = await createRequest({
+        url: `${orderEndpoint.userOrders}?filter=meetup`,
+        method: 'GET'
+    });
+
+    return res.data;
+}
+
+export const getUserShippingOrders = async (): Promise<Order[]> => {
+    const res = await createRequest({
+        url: `${orderEndpoint.userOrders}?filter=shipping`,
+        method: 'GET'
+    });
+
+    return res.data;
+}

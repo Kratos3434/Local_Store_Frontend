@@ -113,8 +113,8 @@ const RequestOrder = ({ product, closer }: { product: Product, closer: any }) =>
                                     Your order has been sent. We will let you know once the seller approves or cancels your order. Once approved, please show up at the meeting place on time
                                 </p>
                                 <div className="flex justify-center items-center mt-10">
-                                    <Link href="/" className="text-white bg-indigo-500 font-bold rounded-md py-4 px-6 cursor-pointer hover:brightness-95">
-                                        Continue browsing
+                                    <Link href="/orders" className="text-white bg-indigo-500 font-bold rounded-md py-4 px-6 cursor-pointer hover:brightness-95">
+                                        Check my Orders
                                     </Link>
                                 </div>
                             </div>

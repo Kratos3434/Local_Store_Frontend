@@ -2,7 +2,7 @@
 
 import { UserDTO } from "@/data";
 import { userAtom } from "@/store";
-import { AccountCircle, ArrowDropDown, Logout, ShoppingCartOutlined } from "@mui/icons-material";
+import { AccountCircle, ArrowDropDown, BorderAll, Logout, ShoppingCartOutlined } from "@mui/icons-material";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSetAtom } from "jotai";
 import { useHydrateAtoms } from "jotai/utils";
@@ -50,6 +50,12 @@ const HomeNavBar = ({ user }: { user: UserDTO | null }) => {
                                                         Profile
                                                     </p>
                                                 </button>
+                                                <Link href="/orders" className="p-2 rounded-md flex items-center bg-black gap-2 cursor-pointer">
+                                                    <BorderAll />
+                                                    <p>
+                                                        Orders
+                                                    </p>
+                                                </Link>
                                                 <button className="p-2 rounded-md flex items-center bg-black gap-2 cursor-pointer" onClick={handleLogout}>
                                                     <Logout />
                                                     <p>

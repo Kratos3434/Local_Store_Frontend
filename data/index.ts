@@ -160,6 +160,7 @@ export interface Order {
     status: Order_Status;
     amount: number;
     amountAfterTax: number;
+    type: string;
 }
 
 interface Order_Details {
