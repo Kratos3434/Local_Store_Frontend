@@ -11,6 +11,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getProductCategories } from "@/controller/product-category.controller";
 import { addProduct } from "@/controller/product.controller";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const AddProduct = () => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<ProductDTO>();
@@ -96,7 +97,7 @@ const AddProduct = () => {
                                         <div className="absolute right-2 top-2 rounded-full bg-gray-300 p-1 cursor-pointer" onClick={() => setPreview(null)}>
                                             <Close />
                                         </div>
-                                        <img width={700} height={300} className="w-full max-w-[700px] h-full max-h-[500px] rounded-md" src={preview} />
+                                        <Image width={700} height={300} className="w-full max-w-[700px] h-full max-h-[500px] rounded-md" src={preview} alt="Product Photo" />
                                     </div>
                                 )
                         }

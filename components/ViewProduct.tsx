@@ -4,6 +4,7 @@ import { getProductById, restockProduct } from "@/controller/product.controller"
 import { Add, Delete, Edit, SentimentDissatisfied } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -58,7 +59,7 @@ const ViewProduct = ({ productId }: { productId: number }) => {
     return (
         <div className="flex justify-center mt-10 gap-10 flex-wrap pb-10">
             <div className="flex flex-col justify-center">
-                <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} alt={product.name} />
+                <Image width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} alt={product.name} />
             </div>
             <div className="w-full max-w-[300px]">
                 <h1 className="font-bold text-3xl">

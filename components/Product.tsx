@@ -9,6 +9,7 @@ import Modal from "./Modal";
 import RequestOrder from "./ReqeustOrder";
 import { useAtomValue, useSetAtom } from "jotai";
 import { openSignupBannerAtom, userAtom } from "@/store";
+import Image from "next/image";
 
 const Product = ({ productId }: { productId: number }) => {
     const { status, data: product } = useQuery({
@@ -46,7 +47,7 @@ const Product = ({ productId }: { productId: number }) => {
     return (
         <div className="flex justify-center md:mt-10 mt-5 gap-10 flex-wrap pb-10">
             <div className="flex flex-col justify-center">
-                <img width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} alt={product.name} />
+                <Image width={500} height={600} className="w-full max-w-[500px] h-[600px] rounded-xl" src={product.featuredPhotoURL} alt={product.name} />
             </div>
             <div className="w-full max-w-[300px]">
                 <h1 className="font-bold text-3xl">
