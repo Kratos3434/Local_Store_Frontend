@@ -92,7 +92,7 @@ const SellerOrder = ({ orderId }: { orderId: number }) => {
     return (
         <div className="flex justify-center mt-3 pb-20">
             <div className="w-full max-w-[700px]">
-                <Image src={data.product.featuredPhotoURL} width={400} height={300} alt={data.product.name} className="w-full h-[600px]" />
+                <Image src={data.product.featuredPhotoURL} width={400} height={300} alt={data.product.name} className="w-full h-[600px] rounded-md" />
                 <div className="flex justify-between gap-3 items-end">
                     <h1 className="font-bold mt-3 text-xl">
                         {data.product.name}

@@ -71,4 +71,5 @@ export const orderEndpoint = {
     declineAsSeller: (orderId: number) => `${orderBaseUrl}/decline/${orderId}`,
     complete: (orderId: number) => `${orderBaseUrl}/complete/${orderId}`,
     userOrders: `${orderBaseUrl}/list/user`,
+    orderDetails: (orderId: number) => `${orderBaseUrl}/details/${orderId}`,
 };

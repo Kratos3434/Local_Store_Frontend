@@ -17,7 +17,7 @@ const OrderCard = ({ order }: { order: Order }) => {
                     <p>Status: <b>{order.status.status}</b></p>
                 </div>
                 <div className="mt-3">
-                    <p className="text-blue-500 text-lg">{order.product.name}</p>
+                    <Link href={`/orders/details/${order.id}`} className="text-blue-500 text-lg hover:underline">{order.product.name}</Link>
                     {
                         order.status.status !== EOrder_Status.PENDING &&
                         (

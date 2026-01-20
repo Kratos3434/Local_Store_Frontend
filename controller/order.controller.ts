@@ -111,3 +111,12 @@ export const getUserShippingOrders = async (): Promise<Order[]> => {
 
     return res.data;
 }
+
+export const getOrderDetails = async (orderId: number): Promise<Order> => {
+    const res = await createRequest({
+        url: orderEndpoint.orderDetails(orderId),
+        method: 'GET'
+    });
+
+    return res.data;
+}

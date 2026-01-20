@@ -41,7 +41,7 @@ const RequestOrder = ({ product, closer }: { product: Product, closer: any }) =>
     }
 
     return (
-        <div className="w-full max-w-[600px] max-h-[865px] h-full bg-white shadow-lg rounded-md py-2 px-4 pb-5 overflow-y-auto">
+        <div className={`w-full max-w-[600px] ${!showMessage && "max-h-[865px] h-full"} bg-white shadow-lg rounded-md py-2 px-4 pb-5 overflow-y-auto`}>
             <div className="flex justify-end items-center sticky top-0">
                 <button className="cursor-pointer" onClick={() => { closer(false) }}>
                     <Close />
@@ -54,11 +54,6 @@ const RequestOrder = ({ product, closer }: { product: Product, closer: any }) =>
                             <p className="text-xl font-bold">
                                 Request an Order
                             </p>
-                            <div className="p-2 rounded-md bg-red-500 text-white my-2">
-                                <small className="p-2 rounded-md bg-red-500 text-white">
-                                    <b>Notice:</b> Please meet in a crowded place like shopping malls or cafes and during daytime. Do not pay until you have confirmed the product.
-                                </small>
-                            </div>
                             <hr className="my-3" />
                             <form className="mt-5" onSubmit={handleSubmit(handleRequestOrder)}>
                                 <Input placeholder="Shopping Mall" label="Preferred Meeting Place (Be specific)" type="text" register={register('preferredMeetingPlace', { required: 'Preferred meeting place is required' })} errorMessage={errors.preferredMeetingPlace && errors.preferredMeetingPlace.message} />
@@ -94,7 +89,15 @@ const RequestOrder = ({ product, closer }: { product: Product, closer: any }) =>
                                     <label>Notes (optional)</label>
                                     <textarea {...register('notes')} className="w-full rounded-md bg-white resize-none outline-indigo-500 p-2 mt-2 border border-black" rows={10} placeholder="Additional instructions" />
                                 </div>
-                                <div className="flex flex-col justify-center items-center mt-10">
+                                <div className="my-5">
+                                    <b>
+                                        Please read before requesting this order:
+                                    </b>
+                                    <p className="text-sm mt-2">
+                                        Before requesting this order, please make sure you can attend the meetup at the agreed time and place, understand that details are final once accepted, and remember to always meet in a safe, public location and during appropriate hours, as the platform isn’t responsible for in-person meetups.
+                                    </p>
+                                </div>
+                                <div className="flex flex-col justify-center items-center mt-5">
                                     {errorMessage && <small className="text-red-500">*{errorMessage}</small>}
                                     <div className="mt-2">
                                         <SubmitButton loading={loading} title="Request Order" />
